@@ -1,16 +1,24 @@
 package fecha;
 
 public class Fecha {
-	private int d; //d�a
+	private int d; //día
 	private int m; //mes
-	private int a; //a�o
+	private int a; //a�o
 
 	
+	/**
+	 * @deprecated
+	 */
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Constructor de la clase Fecha
+	 * @param dia Parámetro para el día
+	 * @param mes Parámetro para el mes
+	 * @param anio Parámetro para el año
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
@@ -18,7 +26,10 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Método para comprobar si una fecha es correcta
+	 * @return Devuelve un booleano indicando si la fecha es correcta o no
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +54,18 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// M�todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	/**
+	 * Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	 * @return Devuelve si es bisiesto
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// M�todo diaSiguiente
+	/**
+	 * Método diaSiguiente
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +78,10 @@ public class Fecha {
 		}
 	}
 
-	// M�todo toString
+	/**
+	 * Método toString (Modifica lo que devuelve el toString)
+	 */
+	@Override
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
